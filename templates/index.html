@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Eye Disease Recognition App</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #4CAF50, #008CBA, #4CAF50);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .container {
+            margin-top: 100px;
+            text-align: center;
+        }
+        .form-inline {
+            margin-top: 20px;
+        }
+        .btn-custom {
+            background-color: #f44336;
+            border-color: #f44336;
+            border-radius: 20px;
+            padding: 10px 20px;
+            color: white;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .hero-section {
+            background-image: url('https://c8y.doxcdn.com/image/upload/c_fill,fl_progressive,h_800,q_auto,w_1600/gtcwiiiqbrkcf69wxnbv.webp'); /* Replace with the image URL */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0;
+        }
+        .hero-heading {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .details-section {
+            padding: 50px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="blur-bg"></div>
+    <div class="container">
+        <h1 class="text-center">Eye Disease Recognition App</h1>
+        <form class="form-inline" action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".jpg, .jpeg, .png" required>
+            <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Predict</button>
+        </form>
+    </div>
+    <div class="hero-section">
+        <h1 class="hero-heading">Welcome to Our Eye Disease Recognition App</h1>
+        <p>Experience accurate predictions and insights about eye diseases using advanced deep learning technology.</p>
+        <a href="#details-section" class="btn btn-custom" id="learn-more-btn">Learn More</a>
+    </div>
+    <div class="details-section" id="details-section" style="display: none;">
+        <div class="container">
+            <h2>Project Details</h2>
+            <p>Welcome to our Eye Disease Recognition App! Our application leverages advanced deep learning technology to predict various eye diseases accurately. With a user-friendly interface, you can upload eye images and receive insights about potential eye conditions.</p>
+            
+            <h3>Diseases Trained On</h3>
+            <ul>
+                <li><strong>Cataract Disease:</strong> Cataract is a clouding of the lens in the eye, leading to blurred vision.</li>
+                <li><strong>Diabetic Retinopathy:</strong> A complication of diabetes that affects the blood vessels of the retina, potentially leading to blindness.</li>
+                <li><strong>Glaucoma:</strong> A group of eye conditions that damage the optic nerve, often leading to vision loss.</li>
+                <li><strong>Normal Eye:</strong> A normal eye indicates that no significant eye disease is detected in the uploaded image.</li>
+                <li><strong>Ocular Disease:</strong> A broad category of diseases affecting various eye structures.</li>
+                <li><strong>Retina Disease:</strong> Conditions affecting the retina, which can lead to vision loss.</li>
+            </ul>
+            
+            <!-- Disease information for Diabetic Retinopathy -->
+            <h3>Diabetic Retinopathy</h3>
+            <p>Diabetic retinopathy is a complication of diabetes that affects the blood vessels of the retina. It can lead to vision loss and blindness if left untreated. Regular eye check-ups and diabetes management are essential to prevent and manage diabetic retinopathy.</p>
+
+            <!-- Disease information for Glaucoma -->
+            <h3>Glaucoma</h3>
+            <p>Glaucoma is a group of eye conditions that damage the optic nerve, often due to increased intraocular pressure. It can gradually lead to vision loss and blindness. Early detection and treatment can help prevent severe vision impairment.</p>
+
+            <!-- Disease information for Normal Eye -->
+            <h3>Normal Eye</h3>
+            <p>A normal eye indicates that no significant eye disease is detected in the uploaded image. However, regular eye check-ups are recommended to maintain good eye health and identify any potential issues early.</p>
+
+            <!-- Disease information for Ocular Disease -->
+            <h3>Ocular Disease</h3>
+            <p>Ocular diseases encompass a range of conditions affecting the eye's structures, including the cornea, iris, and lens. Proper diagnosis and treatment by an eye specialist are crucial for managing ocular diseases and preserving vision.</p>
+
+            <!-- Disease information for Retina Disease -->
+            <h3>Retina Disease</h3>
+            <p>Retinal diseases affect the retina, the light-sensitive tissue at the back of the eye. Conditions like macular degeneration and retinal detachment can lead to vision loss. Timely intervention by an eye specialist is important to prevent further damage.</p>
+        
+            <!-- Continue adding more disease information as needed -->
+
+            <h3>How the Model Works</h3>
+            <p>Our model is trained on a diverse dataset of eye images, and it uses deep learning techniques to analyze patterns and features within the images. When you upload an eye image, the model processes it and predicts the potential eye disease based on the learned patterns. The predictions are displayed along with insights and relevant information about the predicted disease.</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById("learn-more-btn").addEventListener("click", function() {
+            var detailsSection = document.getElementById("details-section");
+            if (detailsSection.style.display === "none") {
+                detailsSection.style.display = "block";
+            } else {
+                detailsSection.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>

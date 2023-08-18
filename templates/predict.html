@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Eye Disease Recognition App - Prediction</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #4CAF50, #008CBA, #4CAF50);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: white;
+        }
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .prediction {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        .predicted-image img {
+            max-width: 300px;
+            display: block;
+            margin: 0 auto;
+        }
+        .class-info h2 {
+            margin-top: 20px;
+            color: #f44336;
+            text-align: center;
+        }
+        .class-description h2 {
+            margin-top: 20px;
+            color: #8B0000; /* Dark red color */
+            text-align: center;
+        }
+        .class-description p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .symptoms h3 {
+            margin-top: 20px;
+            color: #8B4513; /* Dark brown color */
+        }
+        .symptoms ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .treatment h3 {
+            margin-top: 20px;
+            color: #8B0000; /* Dark red color */
+        }
+        .treatment ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .treatment h4 {
+            margin-top: 20px;
+            color: black;
+        }
+        .disclaimer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f44336;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Eye Disease Recognition App - Prediction</h1>
+        <div class="prediction">
+            <div class="predicted-image">
+                <img src="{{ user_image }}" alt="User Image" class="img-thumbnail">
+            </div>
+            <div class="class-info">
+                <h2>{{ predicted_class_name }}</h2>
+            </div>
+            <div class="class-description">
+                <h2>Description</h2>
+                <p>{{ predicted_class_description }}</p>
+            </div>
+            <div class="symptoms">
+                <h3>Symptoms</h3>
+                <ul>
+                    {% for symptom in predicted_class_symptoms %}
+                        <li>{{ symptom }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="treatment">
+                <h3>Treatment</h3>
+                <p>{{ treatment_info[predicted_class_name]['description'] }}</p>
+                <h4>Medicines (Consult a doctor before use)</h4>
+                <ul>
+                    {% for medicine in treatment_info[predicted_class_name]['medicines'] %}
+                        <li>{{ medicine }}</li>
+                    {% endfor %}
+                </ul>
+                <p class="disclaimer">Disclaimer: It's important to consult a medical professional before taking any medications. The information provided here is for educational purposes only and should not be considered medical advice.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
